@@ -1,12 +1,14 @@
 {
   "name": "app",
   "version": "0.0.0",
+  "engines": { "node": "16.16.0", "npm": "8.11.0" },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build — prod",
+    "start" : "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -21,8 +23,10 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "admin-lte": "3.2",
+    "express": "^4.18.2",
     "leaflet": "^1.7.1",
     "ngx-webstorage": "^10.0.1",
+    "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
