@@ -41,16 +41,56 @@
                                     {{now}}
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
-                                    <button
-                                        class="block mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 text-sm rounded">Modify
-                                        a Sig</button>
                                     <button (click)="deleteSigs(sig)"
-                                        class="block bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 text-sm rounded">Delete
+                                        class="block mx-auto bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 text-sm rounded">Delete
                                         the Sig</button>
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
                                     <input class="mr-4" type="checkbox" checked name="config" id="config">
                                     <label for="config">Configuration</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-start mt-8">
+        <h1>Vous êtes connecté en tant que {{loggedRole}}</h1>
+        <button (click)="logOut()"
+            class="ml-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Disconnect</button>
+    </div>
+
+    <div *ngIf="loggedRole === 'admin' || loggedRole === 'superadmin'" class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <table class="min-w-full border text-center">
+                        <thead class="border-b">
+                            <tr>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                                    Number
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                                    Name
+                                </th>
+                                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">
+                                    Role
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b" *ngFor="let user of user$ | async; let index = index;">
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                    {{index + 1}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                    {{user.username}}
+                                </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r">
+                                    {{user.role}}
                                 </td>
                             </tr>
                         </tbody>

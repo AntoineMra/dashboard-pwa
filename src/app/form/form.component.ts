@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Sig } from '../admin/sig';
 import { SigService } from '../admin/sig.service';
@@ -11,7 +12,7 @@ import { SigService } from '../admin/sig.service';
 })
 export class FormComponent implements OnInit {
 
-    sigs$: Observable<Sig[]> = new Observable;
+    sig: Observable<Sig> = new Observable;
     form: FormGroup = this.formBuilder.group({
     name: [],
     description: [],
@@ -22,14 +23,15 @@ export class FormComponent implements OnInit {
     lat: [],
   })
 
-  constructor(private formBuilder: FormBuilder, private sigService: SigService) { }
+  constructor(private formBuilder: FormBuilder, private sigService: SigService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   
   addSigs() {
-    this.sigs$ = this.sigService.postSig(this.form.value)
+    this.sig = this.sigService.postSig(this.form.value)
+    this.router.navigate(['/admin'])
   }
 
 }

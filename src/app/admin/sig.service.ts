@@ -23,7 +23,7 @@ export class SigService {
   }
 
   postSig(body: Sig): Observable<any> {
-      return this.httpClient.post('https://web-mobile-api-1629-2110.herokuapp.com/', body);
+      return this.httpClient.post('https://web-mobile-api-1629-2110.herokuapp.com/sig', body);
   }
 
   updateSig(id :string | null, body: Sig): Observable<any> {
