@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { GuardGuard } from './auth/guard.guard';
+import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', canActivate: [GuardGuard],component: AdminComponent }
 ];
 
 @NgModule({
