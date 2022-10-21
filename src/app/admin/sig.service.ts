@@ -10,12 +10,12 @@ export class SigService {
 
    constructor(private httpClient: HttpClient) { }
   getSigs(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000/sig');
+    return this.httpClient.get('https://web-mobile-api-1629-2110.herokuapp.com/sig');
   }
 
-  getOneSig(iri :string | null): Observable<any> {
-    if (iri) {
-      return this.httpClient.get('http://localhost:3000/' + iri);
+  getOneSig(id :string | null): Observable<any> {
+    if (id) {
+      return this.httpClient.get('https://web-mobile-api-1629-2110.herokuapp.com/sig/' + id);
     }
     else{
       return new Observable<any>()
@@ -23,21 +23,21 @@ export class SigService {
   }
 
   postSig(body: Sig): Observable<any> {
-      return this.httpClient.post('http://localhost:3000/', body);
+      return this.httpClient.post('https://web-mobile-api-1629-2110.herokuapp.com/', body);
   }
 
-  updateSig(iri :string | null, body: Sig): Observable<any> {
-    if (iri) {
-      return this.httpClient.put('http://localhost:3000/' + iri, body);
+  updateSig(id :string | null, body: Sig): Observable<any> {
+    if (id) {
+      return this.httpClient.put('https://web-mobile-api-1629-2110.herokuapp.com/sig/' + id, body);
     }
     else{
       return new Observable<any>()
     }
   }
 
-  deleteSig(iri :string | null): Observable<any> {
-    if (iri) {
-      return this.httpClient.delete('http://localhost:3000/' + iri);
+  deleteSig(id :string | null): Observable<any> {
+    if (id) {
+      return this.httpClient.delete('https://web-mobile-api-1629-2110.herokuapp.com/sig/' + id);
     }
     else{
       return new Observable<any>()

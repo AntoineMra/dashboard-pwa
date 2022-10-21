@@ -1,4 +1,5 @@
 export interface Sig {
+    "id": string,
     "name": string,
     "description": string,
     "range": number,
