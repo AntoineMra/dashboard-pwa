@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.tokenService.setToken(this.form.value['role'])
     if (this.tokenService.isAuthenticate()) {
-      this.router.navigateByUrl('/') 
+      this.router.navigateByUrl('/admin') 
     }
   }
 }

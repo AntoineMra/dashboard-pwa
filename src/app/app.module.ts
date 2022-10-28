@@ -13,6 +13,9 @@ import { AppInterceptor } from './auth/app.interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { VisualsComponent } from './visuals/visuals.component';
+import { BarChartComponent } from './visuals/bar-chart/bar-chart.component';
+import { LineChartComponent } from './visuals/line-chart/line-chart.component';
 
 
 @NgModule({
@@ -22,6 +25,9 @@ import { FormComponent } from './form/form.component';
     AdminComponent,
     LoginComponent,
     FormComponent,
+    VisualsComponent,
+    BarChartComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,

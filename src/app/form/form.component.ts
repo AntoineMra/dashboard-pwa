@@ -13,6 +13,7 @@ import { SigService } from '../admin/sig.service';
 export class FormComponent implements OnInit {
 
     sig: Observable<Sig> = new Observable;
+    sigs$: Observable<Sig[]> = new Observable;
     form: FormGroup = this.formBuilder.group({
     name: [],
     description: [],
@@ -30,8 +31,15 @@ export class FormComponent implements OnInit {
 
   
   addSigs() {
+    
     this.sig = this.sigService.postSig(this.form.value)
-    this.router.navigate(['/admin'])
+    this.getSigs()
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/admin']));  
   }
+
+    getSigs() {
+      this.sigs$ = this.sigService.getSigs()
+    }
 
 }
